@@ -41,7 +41,9 @@
 }
 /* Loading State */
 
-
+.test {
+  color: #fff;
+}
 
 /* Container */
 .container {
@@ -111,7 +113,6 @@
 .empty-container {
   flex-basis: 85%;
   flex-direction: row;
-  justify-content: center;
 }
 
 .empty-container p {
@@ -240,7 +241,7 @@ nav {
 }
 
 .liked-link,
-.logout-link {
+.logout__button {
   text-decoration: none;
   color: #e0e0e0;
 }
@@ -249,13 +250,19 @@ nav {
   align-content: center;
 }
 
-.logout-link {
+.logout__button {
   width: 100px;
   background: #e05c5c;
   margin-left: 1rem;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.logout__button:hover {
+  background: #c56767;
 }
 
 .menu {
@@ -275,8 +282,6 @@ nav {
   border-radius: 0.2rem;
 }
 /* Navbar */
-
-
 
 /* Responsive design */
 
@@ -338,7 +343,7 @@ nav {
     font-size: 15px;
   }
 
-  .logout-link {
+  .logout__button {
     width: 70px;
     font-size: 13px;
     padding: 7px;

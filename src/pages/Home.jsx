@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { fetchImagesByName } from "../api/realTimeImageSearch";
 import ImageCard from "../components/ImageCard";
+import { useAuth } from "../lib/AuthContext";
 
 const Home = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -9,6 +10,7 @@ const Home = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const [showNavbar, setShowNavbar] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
+    const { userLogout } = useAuth()
 
     const fetchImages = async (name) => {
         setIsLoading(true)
@@ -52,7 +54,7 @@ const Home = () => {
             </div>
             <div className={`navigation-section${showNavbar ? " show" : ""}`}>
                 <Link className="liked-link"> Liked Images </Link>
-                <Link className="logout-link"> Log out </Link>
+                <button className="logout__button" onClick={userLogout}> Log out </button>
             </div> 
         </nav>
         {isLoading ? (
