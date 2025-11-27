@@ -4,6 +4,7 @@ import { LuHeart } from "react-icons/lu";
 import { Link } from 'react-router';
 import { useAuth } from "../lib/AuthContext";
 import { database, DB_ID, IMAGES_COLLECTION_ID } from "../lib/appwrite";
+import '../styles/image-card.css';
 
 const ImageCard = ({ image }) => {
   const { user } = useAuth()

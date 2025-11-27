@@ -3,7 +3,7 @@ const BASE_URL = "https://real-time-image-search.p.rapidapi.com"
 const options = {
     method: 'GET',
 	headers: {
-		'x-rapidapi-key': 'c400aef20emsh2b3cfd10e541ec9p124a32jsn1da1871ce378',
+		'x-rapidapi-key': 'e2a058d304msh9d0a4a435534e52p19c164jsn5e1fbcb6803a',
 		'x-rapidapi-host': 'real-time-image-search.p.rapidapi.com'
 	}
 }

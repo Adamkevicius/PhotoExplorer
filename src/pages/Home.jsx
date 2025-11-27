@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { HiOutlineSearch } from "react-icons/hi";
 import { fetchImages } from "../api/realTimeImageSearch";
 import ImageCard from "../components/ImageCard";
 import Navbar from "../components/Navbar";
+import '../styles/home.css';
 
 const Home = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -34,7 +36,7 @@ const Home = () => {
   return (
     <div className="app">
         <Navbar />
-        <div className="search-section">
+        <div className="search__section">
             <input 
                 className="search-input" 
                 type="text" 
@@ -43,6 +45,9 @@ const Home = () => {
                 onChange={e => setSearchQuery(e.target.value)}
                 onKeyDown={e => handleOnSubmit(e)}
             />
+            <div className="search__icon">
+                <HiOutlineSearch style={{background: "rgba(255, 255, 255, 0.1)", borderRadius: "20px", padding: "4px"}} onClick={getImages}/>
+            </div>
         </div>
         {isLoading ? (
             <div className="loading">
