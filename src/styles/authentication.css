@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 .auth__card {
@@ -12,7 +11,7 @@
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     width: 500px;
-    height: 35rem;
+    height: 580px;
     padding: 5rem;
     border-radius: 10px;
     margin-block: 12rem;
@@ -64,4 +63,30 @@
     text-decoration: underline;
     color: #add8e6;
     margin-left: 0.5rem;
+}
+
+@media (min-device-width: 320px) and (max-device-width: 480px) {
+    .auth__card {
+        width: 350px;
+        height: 480px;
+    }
+
+    .auth__container h3 {
+        font-size: 1.7rem;
+    }
+
+    .input__container input {
+        padding: 0.5rem;
+        font-size: 12px;
+    }
+
+    .input__container button {
+        padding: 0.5rem;
+        font-size: 12px;
+    }
+
+    .input__container p {
+        font-size: 12px
+    }
+
 }

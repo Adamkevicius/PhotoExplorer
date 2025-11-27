@@ -4,6 +4,7 @@ nav * {
 
 nav {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   backdrop-filter: blur(20px);
@@ -18,16 +19,14 @@ nav {
 }
 
 .logo__section {
-  flex: 1;
-  max-width: 250px;
-  min-width: 100px;
-  margin-right: 2rem;
+  display: flex;
+  margin-left: 3rem;
 }
 
 .navigation__section {
   display: flex;
   gap: 0.5rem;
-  margin-left: 2rem;
+  margin-right: 3rem;
 }
 
 .liked__link,
@@ -76,76 +75,48 @@ nav {
 
 @media (min-device-width: 320px) and (max-device-width: 480px) {
     nav {
-        flex-wrap: wrap;
-        padding-top: 1rem;
-        margin-bottom: -50px;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      margin-bottom: -50px;
+    }
+    .logo__section {
+      margin-left: 1rem;
     }
 
     .menu {
-        display: flex;
-        margin-top: 1rem;
-    }
-
-    .logo__section {
-        max-width: 280px;
-    }
-
-    .logo__section h1 {
-        font-size: 20px;
-        text-align: center;
+      display: flex;
     }
 
     .navigation__section {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        margin-top: 1rem;
-        gap: 1rem;
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      gap: 1rem;
     }
 
     .navigation__section {
-        display: none;
+      display: none;
     }
 
     .navigation__section.show {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 2.5rem;
-        margin-left: 0;
-        margin-right: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2.5rem;
+      margin-left: 0;
+      margin-right: 4rem;
     }
 
     .liked__link {
-        font-size: 15px;
+      font-size: 15px;
     }
 
     .logout__button {
-        width: 70px;
-        font-size: 13px;
-        padding: 7px;
-    }
-}
-
-  /* Tablets */
-@media (min-device-width: 768px) and (max-device-width: 1024px) {
-    nav {
-        flex-wrap: wrap;
-        padding-top: 1rem;
-    }
-
-    .logo__section {
-        max-width: 170px;
-        margin-top: 1rem;
-    }
-
-    .logo__section h1 {
-        font-size: 25px;
-    }
-
-    .navigation__section {
-        margin-top: 1rem;
-        margin-left: 2rem;
+      width: 70px;
+      font-size: 13px;
+      padding: 7px;
     }
 }
