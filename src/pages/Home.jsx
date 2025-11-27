@@ -1,25 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router";
 import { fetchImages } from "../api/realTimeImageSearch";
 import ImageCard from "../components/ImageCard";
-import { useAuth } from "../lib/AuthContext";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [images, setImages] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
-    const [showNavbar, setShowNavbar] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
-    const { userLogout } = useAuth()
     const [limit, setLimit] = useState("50")
     const [size, setSize] = useState("any")
     const [fileType, setFileType] = useState("any")
 
     const getImages = async () => {
         setIsLoading(true)
-        console.log(`Limit: ${limit}`)
-        console.log(`Size: ${size}`)
-        console.log(`FileType: ${fileType}`)
         try {
             const fetchedImages = await fetchImages(searchQuery, limit, size, fileType)
 
@@ -39,30 +33,17 @@ const Home = () => {
 
   return (
     <div className="app">
-        <nav>
-            <div className="logo-section">
-                    <h1> Photo Explorer </h1>
-            </div>
-            <div className="search-section">
-                <input 
-                    className="search-input" 
-                    type="text" 
-                    placeholder="Type something..."
-                    value={searchQuery}
-                    onChange={e => setSearchQuery(e.target.value)}
-                    onKeyDown={e => handleOnSubmit(e)}
-                />
-            </div>
-            <div className="menu" onClick={() => setShowNavbar(prev => !prev)}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div className={`navigation-section${showNavbar ? " show" : ""}`}>
-                <Link className="liked-link"> Liked Images </Link>
-                <button className="logout__button" onClick={userLogout}> Log out </button>
-            </div> 
-        </nav>
+        <Navbar />
+        <div className="search-section">
+            <input 
+                className="search-input" 
+                type="text" 
+                placeholder="Type something..."
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                onKeyDown={e => handleOnSubmit(e)}
+            />
+        </div>
         {isLoading ? (
             <div className="loading">
                 <div className="spinner" />
