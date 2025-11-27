@@ -89,7 +89,7 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
-.image-card button {
+.image__button {
   width: 2rem;
   height: 2rem;
   font-size: 1rem;
@@ -102,9 +102,18 @@
   cursor: pointer;
 }
 
-.image-card button:hover {
+.image__button:hover {
   border-color: rgba(173, 216, 230, 0.3);
-  background: rgba(255, 255, 255, 0.05)
+  background: #e05c5c
+}
+
+.image__button.liked {
+  background: #e05c5c;
+}
+
+.image__button.liked:hover {
+  border-color: rgba(173, 216, 230, 0.3);
+  background: rgba(255, 255, 255, 0.1)
 }
 /* ImageCard */
 
