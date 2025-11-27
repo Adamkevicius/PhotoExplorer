@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { fetchImagesByName } from "../api/realTimeImageSearch";
+import { fetchImages } from "../api/realTimeImageSearch";
 import ImageCard from "../components/ImageCard";
 import { useAuth } from "../lib/AuthContext";
 
@@ -11,13 +11,19 @@ const Home = () => {
     const [showNavbar, setShowNavbar] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
     const { userLogout } = useAuth()
+    const [limit, setLimit] = useState("50")
+    const [size, setSize] = useState("any")
+    const [fileType, setFileType] = useState("any")
 
-    const fetchImages = async (name) => {
+    const getImages = async () => {
         setIsLoading(true)
+        console.log(`Limit: ${limit}`)
+        console.log(`Size: ${size}`)
+        console.log(`FileType: ${fileType}`)
         try {
-            const fetchedImages = await fetchImagesByName(name)
-            setImages(fetchedImages.data)
-            console.log(fetchedImages.data)
+            const fetchedImages = await fetchImages(searchQuery, limit, size, fileType)
+
+            setImages(fetchedImages.data);
         } catch (err) {
             console.error("Error fetching images", err)
         } finally {
@@ -27,7 +33,7 @@ const Home = () => {
 
     const handleOnSubmit = (e) => {
         if (e.key === "Enter") {
-            fetchImages(searchQuery)
+            getImages()
         }
     }
 
@@ -68,29 +74,34 @@ const Home = () => {
                     <h3 onClick={() => setShowFilter(prev => !prev)}> Filter </h3>
                     <div className={`filter-item-container${showFilter ? " show" : ""}`}>
                         <div className="filter-item">
-                            <h5> Size: </h5>
-                            <select>
-                                <option> any </option>
-                                <option> large </option>
-                                <option> medium </option>
-                                <option> icon </option>
-                                <option> 400x300 </option>
-                                <option> 640x480 </option>
-                                <option> 800x600 </option>
-                                <option> 1024x768 </option>
+                            <h5> By Limit: </h5>
+                            <select value={limit} onChange={e => setLimit(e.target.value)}>
+                                <option value={"10"}> 10 </option>
+                                <option value={"20"}> 20 </option>
+                                <option value={"30"}> 30 </option>
+                                <option value={"40"}> 40 </option>
+                                <option value={"50"}> 50 </option>
+                                <option value={"60"}> 60 </option>
+                                <option value={"70"}> 70 </option>
+                                <option value={"80"}> 80 </option>
+                                <option value={"90"}> 90 </option>
+                                <option value={"100"}> 100 </option>
                             </select>
                         </div>
                     </div>
 
                     <div className={`filter-item-container${showFilter ? " show" : ""}`}>
                         <div className="filter-item">
-                            <h5> By Limit: </h5>
-                            <select>
-                                <option> 20 </option>
-                                <option> 40 </option>
-                                <option> 60 </option>
-                                <option> 80 </option>
-                                <option> 100 </option>
+                            <h5> Size: </h5>
+                            <select value={size} onChange={e => setSize(e.target.value)}>
+                                <option value={"any"}> any </option>
+                                <option value={"large"}> large </option>
+                                <option value={"medium"}> medium </option>
+                                <option value={"icon"}> icon </option>
+                                <option value={"400x300_and_more"}> 400x300 </option>
+                                <option value={"640x480_and_more"}> 640x480 </option>
+                                <option value={"800x600_and_more"}> 800x600 </option>
+                                <option value={"1024x768_and_more"}> 1024x768 </option>
                             </select>
                         </div>
                     </div>
@@ -98,16 +109,16 @@ const Home = () => {
                     <div className={`filter-item-container${showFilter ? " show" : ""}`}>
                         <div className="filter-item">
                             <h5> By File Type: </h5>
-                            <select>
-                                <option> any </option>
-                                <option> jpg </option>
-                                <option> jpeg </option>
-                                <option> png </option>
-                                <option> gif </option>
-                                <option> svg </option>
-                                <option> webp </option>
-                                <option> ico </option>
-                                <option> raw </option>
+                            <select value={fileType} onChange={e => setFileType(e.target.value)}>
+                                <option value={"any"}> any </option>
+                                <option value={"jpg"}> jpg </option>
+                                <option value={"jpeg"}> jpeg </option>
+                                <option value={"png"}> png </option>
+                                <option value={"gif"}> gif </option>
+                                <option value={"svg"}> svg </option>
+                                <option value={"webp"}> webp </option>
+                                <option value={"ico"}> ico </option>
+                                <option value={"raw"}> raw </option>
                             </select>
                         </div>
                     </div>
