@@ -114,8 +114,8 @@ const Home = () => {
                 </div>
                 {images.length !== 0 ? (
                     <div className="images-container">
-                        {images.map((image) => (
-                            <ImageCard image={image}/>
+                        {images.map((image, key) => (
+                            <ImageCard key={key} image={image}/>
                         ))}
                     </div>
                 ) : (
