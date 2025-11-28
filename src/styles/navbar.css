@@ -41,6 +41,10 @@ nav {
   align-content: center;
 }
 
+.liked__link:hover {
+  color: #add8e6;
+}
+
 .active {
   text-decoration: underline;
   color: #add8e6;

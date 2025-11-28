@@ -1,15 +1,16 @@
 import { ID, Query } from "appwrite";
 import { useEffect, useState } from "react";
 import { LuHeart } from "react-icons/lu";
-import { Link } from 'react-router';
 import { useAuth } from "../lib/AuthContext";
 import { database, DB_ID, IMAGES_COLLECTION_ID } from "../lib/appwrite";
 import '../styles/image-card.css';
+import ImageDetails from "./ImageDetails";
 
 const ImageCard = ({ image, extension }) => {
   const { user } = useAuth()
   const [saved, setSaved] = useState(false)
   const [likedImageRowId, setLikedImageRowId] = useState("")
+  const [selectedImage, setSelectedImage] = useState(false)
 
   useEffect(() => {
     isAlreadyLiked()
@@ -90,13 +91,17 @@ const ImageCard = ({ image, extension }) => {
     }
   }
 
+  if (selectedImage) {
+    return <ImageDetails image={image} extension={extension} onBack={() => setSelectedImage(false)} />
+  }
+
   return (
-    <Link>
-        <div className='image__card'>
-          <button className={`image__button${saved ? " liked" : ""}`} onClick={handleImage}> <LuHeart style={{marginTop: 5, background: "none"}} /> </button>
-          <img src={image.url} alt={image.title}/>
-        </div>
-    </Link>
+    <div className="image__card">
+      <button className={`image__button${saved ? " liked" : ""}`} onClick={handleImage}>
+        <LuHeart style={{marginTop: 5, background: "none"}} />
+      </button>
+      <img src={image.url} alt={image.title} onClick={() => setSelectedImage(true)}/>
+    </div>
   )
 }
 
