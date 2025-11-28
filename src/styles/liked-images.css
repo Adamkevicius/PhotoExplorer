@@ -1,0 +1,12 @@
+.liked__images-container {
+    display: grid;
+    width: 100%;
+    padding: 5rem;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 5rem
+}
+
+#no-likes {
+    font-size: xx-large;
+    margin-top: 20rem;
+}
