@@ -21,6 +21,8 @@ nav {
 .logo__section {
   display: flex;
   margin-left: 3rem;
+  text-decoration: none;
+  color: #e0e0e0;
 }
 
 .navigation__section {
@@ -37,6 +39,11 @@ nav {
 
 .liked__link {
   align-content: center;
+}
+
+.active {
+  text-decoration: underline;
+  color: #add8e6;
 }
 
 .logout__button {

@@ -1,0 +1,99 @@
+.liked__image-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.liked__image-card h2 {
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.liked__image-card img {
+    margin-bottom: 2.5rem;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    align-self: center;
+}
+
+.image__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 0.7rem;
+}
+
+.button__container {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    background: rgba(255, 255, 255, 0);
+}
+
+#delete {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    width: 150px;
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    background: #e05c5c;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+#delete:hover {
+    border-color: rgba(173, 216, 230, 0.3);
+    background: #f97373
+}
+
+#size {
+    background: rgba(255, 255, 255, 0);
+    font-size: 12px;
+}
+
+#size span {
+    background: rgba(255, 255, 255, 0);
+    font-size: 15px;
+    margin-right: 0.2rem;
+    font-weight: bold;
+}
+
+#dimensions {
+    background: rgba(255, 255, 255, 0);
+    font-size: 12px;
+}
+
+#dimensions span {
+    background: rgba(255, 255, 255, 0);
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+#download {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    width: 300px;
+    padding: 1rem;
+    background: #08495f;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+#download:hover {
+    background: #1b637b;
+}

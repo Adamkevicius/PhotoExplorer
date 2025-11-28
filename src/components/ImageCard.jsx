@@ -6,7 +6,7 @@ import { useAuth } from "../lib/AuthContext";
 import { database, DB_ID, IMAGES_COLLECTION_ID } from "../lib/appwrite";
 import '../styles/image-card.css';
 
-const ImageCard = ({ image }) => {
+const ImageCard = ({ image, extension }) => {
   const { user } = useAuth()
   const [saved, setSaved] = useState(false)
   const [likedImageRowId, setLikedImageRowId] = useState("")
@@ -49,6 +49,11 @@ const ImageCard = ({ image }) => {
   }
 
   const saveImage = async () => {
+    let ext = extension
+    if (ext === "any") {
+      ext = "jpg"
+    }
+
     const promise = database.createRow({
         databaseId: DB_ID,
         tableId: IMAGES_COLLECTION_ID,
@@ -59,7 +64,8 @@ const ImageCard = ({ image }) => {
           imageURL: image.url,
           size: image.size,
           dimensions: `${image.width}x${image.height}`,
-          userId: user.$id
+          userId: user.$id,
+          extension: ext
         }
       }
     )
@@ -86,9 +92,9 @@ const ImageCard = ({ image }) => {
 
   return (
     <Link>
-        <div className='image-card'>
-        <button className={`image__button${saved ? " liked" : ""}`} onClick={handleImage}> <LuHeart style={{marginTop: 5, background: "none"}} /> </button>
-            <img src={image.url} alt={image.title}/>
+        <div className='image__card'>
+          <button className={`image__button${saved ? " liked" : ""}`} onClick={handleImage}> <LuHeart style={{marginTop: 5, background: "none"}} /> </button>
+          <img src={image.url} alt={image.title}/>
         </div>
     </Link>
   )

@@ -112,7 +112,7 @@ const Home = () => {
                 {images.length !== 0 ? (
                     <div className="images-container">
                         {images.map((image, key) => (
-                            <ImageCard key={key} image={image}/>
+                            <ImageCard key={key} image={image} extension={fileType}/>
                         ))}
                     </div>
                 ) : (
