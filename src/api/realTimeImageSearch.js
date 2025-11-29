@@ -1,11 +1,10 @@
-import { rapidApiRealTimeImageSearch } from "../../constants";
 
 const BASE_URL = "https://real-time-image-search.p.rapidapi.com"
 const options = {
     method: 'GET',
 	headers: {
-		'x-rapidapi-key': rapidApiRealTimeImageSearch.rapidApiKey,
-		'x-rapidapi-host': rapidApiRealTimeImageSearch.rapidApiHost
+		'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY,
+		'x-rapidapi-host': import.meta.env.VITE_RAPID_API_HOST
 	}
 }
 
