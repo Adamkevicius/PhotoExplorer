@@ -29,7 +29,20 @@ const Home = () => {
 
     const handleOnSubmit = (e) => {
         if (e.key === "Enter") {
-            getImages()
+            if (searchQuery.length === 0) {
+                return
+            }
+            else {
+                getImages()
+            }
+        }
+    }
+
+    const handleOnClick = () => {
+        if (searchQuery.length === 0) {
+            return
+        } else {
+            getImages
         }
     }
 
@@ -46,7 +59,7 @@ const Home = () => {
                 onKeyDown={e => handleOnSubmit(e)}
             />
             <div className="search__icon">
-                <HiOutlineSearch style={{background: "rgba(255, 255, 255, 0.1)", borderRadius: "20px", padding: "4px"}} onClick={getImages}/>
+                <HiOutlineSearch style={{background: "rgba(255, 255, 255, 0.1)", borderRadius: "20px", padding: "4px"}} onClick={handleOnClick}/>
             </div>
         </div>
         {isLoading ? (
