@@ -52,7 +52,7 @@ const LikedImages = () => {
     <div className="app">
       <Navbar />
       {fetchedImages.length === 0 ? (
-        <p id="no-likes"> Nothing here yet - start liking some images to see them appear. </p>
+        <p className="empty-container"> Nothing here yet - start liking some images to see them appear. </p>
       ) : (
         <div className="liked__images-container">
             {fetchedImages.map((image, key) => (

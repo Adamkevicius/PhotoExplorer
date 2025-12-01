@@ -161,7 +161,6 @@
   .filter-container h3:hover {
     border-color: rgba(173, 216, 230, 0.3);
     background: rgba(255, 255, 255, 0.05);
-    cursor: pointer;
   }
 
   .filter-item-container {
