@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { validate } from "react-email-validator";
 import { useNavigate } from "react-router";
 import { useAuth } from "../lib/AuthContext";
 import '../styles/authentication.css';
@@ -20,20 +21,29 @@ const Authentication = () => {
   const handleAuth = async () => {
     if (!email || !password) {
       setError("Please fill all fields")
+      return
+    }
+
+    if (!validate(email)) {
+      setError("Email is invalid.")
+      return
     }
 
     if (password.length < 8) {
       setError("Passwords must be at least 8 characters long.")
+      return
     }
 
-    setError(null)
-
-    const userInfo = {email, password}
+    const userInfo = { email, password }
     if (isLogin) {
-      userLogin(userInfo)
+      const userLoginResponse = await userLogin(userInfo)
+      setError(userLoginResponse)
+      return
     }
     else {
-      userRegister(userInfo)
+      const userRegisterResponse = await userRegister(userInfo)
+      setError(userRegisterResponse)
+      return
     }
   }
 
@@ -44,10 +54,14 @@ const Authentication = () => {
         <div className="input__container">
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email..."/>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password..."/>
+          <p id="error-text"> {error} </p>
           <button onClick={handleAuth}> {isLogin ? "Sign in" : "Sign up"} </button>
           <p> 
             {isLogin ? "New User?" : "Don't have an account?"} 
-            <span onClick={() => setIsLogin(prev => !prev)}> 
+            <span onClick={() => {
+              setError(null)
+              setIsLogin(prev => !prev)
+            }}> 
               {isLogin ? "Register" : "Login"} 
             </span>
           </p>

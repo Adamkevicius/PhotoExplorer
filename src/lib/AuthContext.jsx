@@ -16,39 +16,51 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const userLogin = async (userInfo) => {
-    setLoading(true)
     try {
       await account.createEmailPasswordSession({
         email: userInfo.email,
         password: userInfo.password
       })
+      setLoading(true)
 
       let accountDetails = await account.get()
 
       setUser(accountDetails)
+      setLoading(false)
+
+      return null
     }
     catch (error) {
-      console.log(error)
+      setLoading(false)
+      if (error instanceof Error) {
+        return error.message
+      }
+
+      return "An error occured during signing in"
     }
-    setLoading(false)
   }
 
   const userRegister = async (userInfo) => {
-    setLoading(true)
     try {
       await account.create({
         userId: ID.unique(),
         email: userInfo.email,
         password: userInfo.password
       })
+      setLoading(true)
 
       await userLogin(userInfo)
+      setLoading(false)
       navigate("/")
     }
     catch (error) {
-      console.log(error)
+      setLoading(false)
+      if (error instanceof Error) {
+        return error.message
+      }
+
+      return "An error ocurred during signing up"
     }
-    setLoading(false)
   }
 
   const userLogout = async () => {
