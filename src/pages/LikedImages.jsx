@@ -33,7 +33,7 @@ const LikedImages = () => {
             const images = await database.listRows({
                 databaseId: DB_ID,
                 tableId: IMAGES_COLLECTION_ID,
-                queries: [Query.equal("userId", [user.$id])]
+                queries: [Query.equal("userId", user.$id)]
             })
 
             if (images.total > 0) {

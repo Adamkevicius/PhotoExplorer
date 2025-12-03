@@ -65,6 +65,12 @@
     margin-left: 0.5rem;
 }
 
+#error-text {
+    color: #D9534F;
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+}
+
 @media (min-device-width: 320px) and (max-device-width: 480px) {
     .auth__card {
         width: 350px;
@@ -87,6 +93,10 @@
 
     .input__container p {
         font-size: 12px
+    }
+
+    #error-text {
+        font-size: 10px;
     }
 
 }
