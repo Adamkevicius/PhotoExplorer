@@ -36,7 +36,9 @@ const LikedImageCard = ({ image }) => {
     return (
         <div className="liked__image-card">
             <h2> { image.title } </h2>
-            <img src={ image.imageURL }/>
+            <div className="image__container">
+                <img src={ image.imageURL }/>
+            </div>
             <div className="image__info">
                 <p id="size"> <span> Size: </span> {image.size} </p>
                 <p id="dimensions"> <span> Dimensions: </span> {image.dimensions} </p>

@@ -1,9 +1,9 @@
 .liked__images-container {
     display: grid;
     width: 100%;
-    padding: 5rem;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 5rem
+    padding: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 2rem
 }
 
 .empty-container {
